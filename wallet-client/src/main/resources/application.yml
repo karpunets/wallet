@@ -1,0 +1,5 @@
+wallet:
+  cli:
+    users: 100
+    concurrent-threads-per-user: 100
+    rounds-per-thread: 10

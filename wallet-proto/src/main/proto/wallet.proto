@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ee.avalanchelabs.wallet.proto";
+
+package grpc;
+
+service User {
+    rpc Create (Empty) returns (UserDto) {
+    }
+}
+
+service Wallet {
+    rpc Deposit (FundsRequest) returns (TransactionDto) {
+    }
+    rpc Withdraw (FundsRequest) returns (TransactionDto) {
+    }
+    rpc Balance (UserDto) returns (stream AccountDto) {
+    }
+}
+
+message Empty {
+}
+
+enum Currency {
+    EUR = 0;
+    USD = 1;
+    GBP = 2;
+}
+
+message FundsRequest {
+    string user_id = 1;
+    string amount = 2;
+    Currency currency = 3;
+}
+
+message UserDto {
+    string id = 1;
+}
+
+message AccountDto {
+    string amount = 1;
+    Currency currency = 2;
+}
+
+message TransactionDto {
+    string id = 1;
+}

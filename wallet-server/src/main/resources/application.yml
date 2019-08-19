@@ -1,0 +1,9 @@
+wallet:
+  server:
+    port: 9090
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  jpa:
+    hibernate:
+      ddl-auto: none

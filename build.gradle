@@ -1,0 +1,33 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.6.RELEASE'
+        grpcVersion = '1.22.1'
+        protobufVersion = '3.7.1'
+        protocVersion = protobufVersion
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: "io.spring.dependency-management"
+
+    group = 'ee.avalanchelabs'
+    version = '1.0'
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

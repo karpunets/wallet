@@ -1,0 +1,19 @@
+version: "2.1"
+
+services:
+  wallet-client:
+    image: ee.avalanchelabs/wallet-client:1.0
+    container_name: wallet-client
+    environment:
+      - WALLET_CLI_USERS=100
+      - WALLET_CLI_CONCURRENT_THREADS_PER_USER=16
+      - WALLET_CLI_ROUNDS_PER_THREAD=10
+      - WALLET_SERVER_HOST=wallet-server
+      - WALLET_SERVER_PORT=9090
+    networks:
+      wallet-network:
+        aliases:
+          - wallet-client
+networks:
+  wallet-network:
+    name: wallet-network
